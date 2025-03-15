@@ -1,4 +1,4 @@
-from services import create_board
+from services.board import create_board
 
 
 def test_create_board():

@@ -9,7 +9,8 @@
 
 
   TODO: 
-  - [ ] display table 
+  - [X] display table 
     1. size of table is changeble ? 
     2. CLI output?
-  - 
+  - [X] ask player to MOVE 
+  - [ ] check the winner
