@@ -1,4 +1,4 @@
-def isWinnerExists(player, board, width, height):
+def is_winner_exists(player, board, width, height):
     for column_index in range(width - 3):
         for row_index in range(height):
             # -> horizontal :
@@ -61,3 +61,11 @@ def isWinnerExists(player, board, width, height):
             ):
                 return True
     return False
+
+
+def is_board_full(board, height, width, empty_space="."):
+    for row_index in range(height):
+        for column_index in range(width):
+            if board[(column_index, row_index)] == empty_space:
+                return False
+    return True

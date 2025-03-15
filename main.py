@@ -1,7 +1,8 @@
-from services.board import create_board, display_board
-from services.player import ask_player_to_move
-from services.check_board import isWinnerExists
 import sys
+
+from services.board import create_board, display_board
+from services.check_board import is_board_full, is_winner_exists
+from services.player import ask_player_to_move
 
 EMPTY_SPACE = "."
 PLAYER_X = "X"
@@ -24,9 +25,14 @@ def main():
         )
         board[player_move] = player_turn
 
-        if isWinnerExists(player_turn, board, BOARD_WIDTH, BOARD_HEIGHT):
+        if is_winner_exists(player_turn, board, BOARD_WIDTH, BOARD_HEIGHT):
             display_board(board, width=BOARD_WIDTH, height=BOARD_HEIGHT)
             print(f"player {player_turn} won!")
+            sys.exit()
+
+        elif is_board_full(board, BOARD_HEIGHT, BOARD_WIDTH):
+            display_board(board, width=BOARD_WIDTH, height=BOARD_HEIGHT)
+            print("tie!")
             sys.exit()
 
         if player_turn == PLAYER_X:
