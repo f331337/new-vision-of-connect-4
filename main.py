@@ -1,6 +1,7 @@
 from services.board import create_board, display_board
 from services.player import ask_player_to_move
-
+from services.check_board import isWinnerExists
+import sys
 
 EMPTY_SPACE = "."
 PLAYER_X = "X"
@@ -23,7 +24,10 @@ def main():
         )
         board[player_move] = player_turn
 
-        display_board(board, width=BOARD_WIDTH, height=BOARD_HEIGHT)
+        if isWinnerExists(player_turn, board, BOARD_WIDTH, BOARD_HEIGHT):
+            display_board(board, width=BOARD_WIDTH, height=BOARD_HEIGHT)
+            print(f"player {player_turn} won!")
+            sys.exit()
 
         if player_turn == PLAYER_X:
             player_turn = PLAYER_O
